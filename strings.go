@@ -12,6 +12,10 @@ func main() {
 	WHERE age > 18`
 	fmt.Println(q)
 
+	// убирает пробелы
+	strings.TrimSpace(" hello ") // "hello"
+
+
 
 	// обрезает символы, переданные вторым аргументом, с обеих сторон строки
 	strings.Trim(" hello ", " ") // "hello"

@@ -16,6 +16,15 @@ func plus(a, b, c int){
     fmt.Println(a + b + c)
 }
 
+func add(x, y int, a, b, c float32){
+    var z = x + y
+    var d = a + b + c
+    fmt.Println("x + y = ", z)
+    fmt.Println("a + b + c = ", d)
+}
+
+
+
 
 func square(num int) int {
     return num * num
@@ -41,9 +50,9 @@ func swap(x, y int) (int, int) {
 } 
 
 
-func sum(nums ...int) (res int) {
-    for _, n := range nums {
-        res += n
+func sum(numbers ...int) (res int) {
+    for _, number := range numbers {
+        res += number
     }
     return
 }
@@ -74,6 +83,10 @@ func main() {
     fmt.Println(sum(1))       // 1
     fmt.Println(sum(1, 2))    // 3
     fmt.Println(sum(1, 2, 3)) // 6
+
+	fmt.Println(sum([]int{1, 2}...))    // 3
+    fmt.Println(sum([]int{1, 2, 3}...)) // 6
+
 
 	defer welcome()
     fmt.Println("Привет!") // сначала выведет "Привет! " и только после этого выведет "Добро пожаловать!"

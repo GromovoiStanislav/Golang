@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 
 
@@ -19,6 +22,25 @@ func main() {
 		case 5: fmt.Println("Five")
 		default: fmt.Println("Unknown Number")
 	}
+
+
+
+	switch a := rand.Intn(10) + 1; a {
+    case 9: fmt.Println("a = 9")
+    case 8: fmt.Println("a = 8")
+    case 7: fmt.Println("a = 7")
+    case 6, 5, 4: fmt.Println("a = 6 или 5 или 4")
+    default: 
+        fmt.Println("значение переменной a не определено")
+	}
+
+	company := ""
+	switch rand.Intn(3) {
+	case 0: company = "Space Adventures"
+	case 1: company = "SpaceX"
+	case 2: company = "Virgin Galactic"
+	}
+	fmt.Println(company)
 
 
 	x := 3
