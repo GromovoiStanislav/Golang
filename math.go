@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	
 	fmt.Println(rand.Intn(10) + 1)
 
 	var pi64 = math.Pi
@@ -16,4 +17,5 @@ func main() {
 	fmt.Println(pi32) // Выводит: 3.1415927
 
 	fmt.Println(math.Abs(1 - 10)) // 9
+
 }
