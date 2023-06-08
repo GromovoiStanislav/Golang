@@ -51,17 +51,33 @@ func swap(x, y int) (int, int) {
 
 
 func sum(numbers ...int) (res int) {
+	// numbers - это slice !!!
     for _, number := range numbers {
         res += number
     }
     return
 }
 
+func foo(name string, numbers ...int) (string, []int) {
+	return name, numbers
+}
+
+func foo1(name string, args ...interface{})(string, []interface{}) {
+	return name, args
+}
+
+
+
 
 func welcome() {
     fmt.Println("Добро пожаловать!")
 }
 
+
+func fn() (int, error) {
+	// Какая-то полезная работа
+	return 0, nil
+}
 
 func main() {
     star() // выведет: **********
@@ -86,6 +102,37 @@ func main() {
 
 	fmt.Println(sum([]int{1, 2}...))    // 3
     fmt.Println(sum([]int{1, 2, 3}...)) // 6
+
+	fmt.Println(foo("Это срез:", 1, 2, 3, 4, 5)) // Это срез: [1 2 3 4 5]
+
+	name, args := foo1("Это срез:", "fff", 2, "ddd", 4, 5)
+	fmt.Println(name, args)
+	for _, arg := range args {
+		fmt.Printf("%T %v\n", arg, arg)
+	}
+	// Это срез: [fff 2 ddd 4 5]
+	// string fff
+	// int 2
+	// string ddd
+	// int 4
+	// int 5
+
+
+
+
+	// Игнорирование возвращаемых значений
+	fn()
+
+	i, _ := fn()
+	fmt.Println(i) // 0
+
+	_, err := fn()
+	if err == nil {
+		fmt.Println("Ошибок нет") // Ошибок нет
+	}
+
+
+
 
 
 	defer welcome()

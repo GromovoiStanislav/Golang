@@ -142,6 +142,25 @@ func main() {
 
 
 
+	s_1 := []interface{}{1, 2, 3, 4, 5}
+	fmt.Println(s_1) // [1 2 3 4 5]
+	fmt.Println(s_1...) // 1 2 3 4 5
+
+	s_2 := []interface{}{1, "ff", 3, "dd", 5}
+	fmt.Println(s_2)    // [1 ff 3 dd 5]
+	fmt.Println(s_2...) // 1 ff 3 dd 5
+
+	s_3 := []interface{}{1, 2, s_1, 4, 5}
+	fmt.Println(s_3)    // [1 2 [1 2 3 4 5] 4 5]
+	fmt.Println(s_3...) // 1 2 [1 2 3 4 5] 4 
+
+	s_4 := []interface{}{1, 2, 3, 4, 5}
+	s_4 = append(s_4, s_2, s_1)
+	fmt.Println(s_4)    // [1 2 3 4 5 [1 ff 3 dd 5] [1 2 3 4 5]]
+	fmt.Println(s_4...) // 1 2 3 4 5 [1 ff 3 dd 5] [1 2 3 4 5]
+
+
+
 
 	a1 := [3]int{1, 2, 3}
 	fnA(a1)

@@ -38,7 +38,7 @@ func main() {
 
 
 	for i := 0; i < len(numbers); i++ {
-		fmt.Println(a[i])
+		fmt.Println(numbers[i])
 		// 1
 		// 2
 		// 0
@@ -47,7 +47,7 @@ func main() {
 	}
 
 	for idx := range numbers {
-		fmt.Println(a[idx])
+		fmt.Println(numbers[idx])
 		// 1
 		// 2
 		// 0

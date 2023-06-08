@@ -12,13 +12,19 @@ func main() {
     fmt.Println(f1(3, 4))        // 7
     fmt.Println(f1(6, 7))        // 13
 
+    var add = func(x, y int) int {
+		return x + y
+	}
+	fmt.Println(add(1, 2)) // 3
+
+
+
 
 	// Анонимная функция как аргумент функции
 	action(10, 25, func (x int, y int) int { return x + y })    // 35
     action(5, 6, func (x int, y int) int { return x * y })      // 30
 
 
-	
 	f2 := selectFn(1)
     fmt.Println(f2(2, 3))        	// 5
     fmt.Println(selectFn(1)(4, 5))  // 9
