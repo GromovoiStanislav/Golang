@@ -2,25 +2,22 @@ package main
 
 import "fmt"
 
-func ExampleScope1() {
-	var v int = 1
 
-	{ //внутренний лексический блок
-		var v string = "2"
-		fmt.Println(v) // 2 
-	}
-
-	fmt.Println(v) // 1
-}
 
 var i string = "Строка"
 
 
 func main() {
-	ExampleScope1()
-	// Output:
-	// 2
-	// 1
+	
+	v := 1
+	{ //внутренний лексический блок
+		var v string = "str"
+		fmt.Println(v) // str 
+	}
+	fmt.Println(v) // 1
+
+
+
 
 	i := "Другая строка"
 	for i := 0; i < 3; i++ {
