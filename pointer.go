@@ -3,6 +3,21 @@ package main
 import "fmt"
 
 func main() {
+	
+	x := 200
+	y := &x // var y *int = &x
+	*y++
+	fmt.Println(x) // 201
+
+
+	z := new(int)
+	fmt.Println(*z, z) // 0 0xc00001c030
+	*z = 1
+	fmt.Println(*z, z) // 1 0xc00001c030
+
+
+
+
 	a := 23
 	p := &a
 
@@ -16,6 +31,21 @@ func main() {
 	fmt.Println(a)   // 11
 	fmt.Println(&a) // 0xc00001c030
 	fmt.Println(*&a) // 11
+
+
+
+
+	// указатель на указатель
+	a := 200
+	aPtr := &a
+	*aPtr++
+	bPtr := &aPtr
+	**bPtr++ // указатель на указатель
+	*aPtr++
+	fmt.Println(a) // 203
+
+
+
 
 
 
