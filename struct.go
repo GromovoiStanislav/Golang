@@ -59,7 +59,7 @@ func (p *Person) Talk() {
 }
 type Android struct {
 	Person // Встраиваемые типы
-	model string
+	Model string
 }
 
 
@@ -92,13 +92,14 @@ func main() {
 
 
     var andr = Android{
-		model: "R2-D2",
+		Model: "R2-D2",
 		Person: Person{
 			Name: "name",
 		},
 	}
 	andr.Person.Talk() // Hi, my name is Artoo-Detoo
 	andr.Talk() // Hi, my name is Artoo-Detoo
+	fmt.Println(andr.Name, andr.Person.Name) // Artoo-Detoo Artoo-Detoo
 	fmt.Println(andr) //{{Artoo-Detoo} R2-D2}
 
 
