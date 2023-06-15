@@ -58,7 +58,7 @@ func (p *Person) Talk() {
 	fmt.Println("Hi, my name is", p.Name)
 }
 type Android struct {
-	Person // Встраиваемые типы
+	Person // Встраиваемый тип
 	Model string
 }
 
@@ -73,9 +73,12 @@ func main() {
     
     var c Circle 
     // c := Circle{}
+	fmt.Println(c)     // {{0 0} 0}
+
+	//при инициализации указателя на структуру можно присвоить адрес безымянного объекта
     cPtr := new(Circle) 
-    fmt.Println(c) // {{0 0} 0}
-    fmt.Println(cPtr) // &{{0 0} 0}
+    fmt.Println(cPtr)  // &{{0 0} 0}
+	fmt.Println(*cPtr) // {{0 0} 0}
 
 
     circle1 := Circle{
@@ -125,6 +128,7 @@ func main() {
 
      // указаьтель на структуру
     aPtr := &a
+	//var aPtr *Contact = &a
 	fmt.Println(aPtr.age) // 27
 	fmt.Println((*aPtr).age) // 27
     fmt.Println(aPtr) // &{Андрей 27}
@@ -137,6 +141,67 @@ func main() {
 	fmt.Println((*p).age) // 22
 	fmt.Println(p)        // &{Андрей 22}
 	fmt.Println(*p)       //{ Андрей 22}
+
+
+
+
+	//можно определять указатели на отдельные поля структуры:
+	sam := Contact{name: "Sam", age: 22}
+	var agePointer *int = &sam.age // указатель на поле sam.age
+	*agePointer = 35               // изменяем значение поля
+	fmt.Println(sam)               // {Sam 35}
+
+
+
+
+	first := node{value: 4}
+	second := node{value: 5}
+	third := node{value: 6}
+
+	first.next = &second
+	second.next = &third
+
+	var current *node = &first
+	printNodeValue(current)
+	// 4
+	// 5
+	// 6
+
+	//или
+	printNodes(current)
+	// 4
+	// 5
+	// 6
+
+	//или
+    for current != nil{
+        fmt.Println(current.value)
+        current = current.next
+    }
+	// 4
+	// 5
+	// 6
 }
 
 
+// поле ссылается на тот же тип
+type node struct{
+    value int
+    next *node //  ! поле должно представлять указатель на структуру
+	//next node // ! неправильно
+}
+
+// рекурсивный вывод списка
+func printNodeValue(n *node){
+    fmt.Println(n.value)
+    if n.next != nil{
+        printNodeValue(n.next)
+    }
+}
+//или
+func printNodes(n *node) {
+	for n != nil {
+		fmt.Println(n.value)
+		n = n.next
+	}
+}
