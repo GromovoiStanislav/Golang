@@ -24,6 +24,18 @@ func (cPtr *Contact) welcome() {
 } 
 func (cPtr *Contact) increase(val int) {
 	cPtr.age += val
+	// (*cPtr).age = val
+}
+func (cPtr *Contact) updateAge(newAge int){
+    (*cPtr).age = newAge
+	// cPtr.age = newAge
+}
+func (cPtr *Contact) print(){
+    fmt.Println("Имя:", cPtr.name)
+    fmt.Println("Возраст:", cPtr.age)
+}
+func (cPtr *Contact) eat(meal string){
+    fmt.Println(cPtr.name, "ест", meal)
 }
 
 
@@ -115,8 +127,16 @@ func main() {
     a.welcome() // Welcome Андрей
     welcome2(a) // Welcome Андрей
     a.increase(5)
+	// aPtr := &a
+	// aPtr.increase(5)
 	fmt.Println(a.age) // 38
+	a.updateAge(33)
+	// aPtr.updateAge(33)
 
+	a.print()
+	// Имя: Андрей
+	// Возраст: 33
+	a.eat("борщ с капустой, но не красный") //Андрей ест борщ с капустой, но не красный
 
 
 

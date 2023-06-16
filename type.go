@@ -12,6 +12,11 @@ func distanceToEnemy (distance mile){
  
 
 type library []string
+func (l library) print(){
+    for _, val := range l{
+        fmt.Println(val)
+    }
+}
  
 func printBooks(lib library){
     for _, value := range lib{
@@ -43,5 +48,11 @@ func main() {
 	// myLibrary3 := []int{1, 2, 3}
 	// printBooks(myLibrary3) // ! ошибка
 
+
+	lib := library{"Book1", "Book2", "Book3"}
+	lib.print()
+	// Book1
+	// Book2
+	// Book3
 
 }
