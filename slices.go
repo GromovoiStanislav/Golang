@@ -79,6 +79,7 @@ func main() {
 
 	fmt.Println(baseArray)      // [0 1 2 3 4 5 6 7 8 9]
 	fmt.Println(baseSlice)      // [5 6 7]
+	fmt.Println(baseSlice[1])      // 6 
 	fmt.Println(len(baseSlice)) // 3
 	fmt.Println(cap(baseSlice)) // 5
 	pointer := fmt.Sprintf("%p", baseSlice)
@@ -110,6 +111,15 @@ func main() {
 	fmt.Println(baseSlice) // [5 100 7 10 11 12 13] Не изменился!!!
 
 	
+
+	num := [5]int{0, 2, 4, 6, 8}
+	numSlice := num[1:3]
+	fmt.Println(numSlice[1]) // 4
+	numSlice[0] = 8
+	fmt.Println(num) // [0 8 4 6 8]
+
+
+
 	g := []int{1, 2, 3}
 	g = append(g, g...)
 	fmt.Println(g) // [1 2 3 1 2 3]
@@ -172,6 +182,32 @@ func main() {
 	b1 := []int{1, 2, 3}
 	fnB(b1)
 	fmt.Println(b) // [1 15 3] Срез Изменился!!!
+
+
+
+
+	// перебор их элементов
+	s := make([]int, 5)
+	s[1] = 2
+	s[2] = 3
+  
+	for i, v := range s {
+	  fmt.Println(i, v)
+	}
+	// 0 0
+	// 1 2
+	// 2 3
+	// 3 0
+	// 4 0
+	for _, v := range a {
+		fmt.Println(v)
+	}
+	// 0
+	// 2
+	// 3
+	// 0
+	// 0
+
 
 
 
