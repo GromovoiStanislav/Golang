@@ -66,6 +66,95 @@ func main() {
 	fmt.Println(people) // map[]
 
 
+	///////////////////
+	elements := make(map[string]string)
+	elements["H"] = "Hydrogen"
+	elements["He"] = "Helium"
+	elements["Li"] = "Lithium"
+	elements["Be"] = "Beryllium"
+	elements["B"] = "Boron"
+	elements["C"] = "Carbon"
+	elements["N"] = "Nitrogen"
+	elements["O"] = "Oxygen"
+	elements["F"] = "Fluorine"
+	elements["Ne"] = "Neon"
+	fmt.Println(elements["Li"]) // Lithium
+
+	fmt.Println(elements["Un"]) // пустая строка
+
+	// с проверкой
+	if name, ok := elements["Un"]; ok {
+		fmt.Println(name, ok)
+	}
+
+
+	elements1 := map[string]string{
+		"H": "Hydrogen",
+		"He": "Helium",
+		"Li": "Lithium",
+		"Be": "Beryllium",
+		"B": "Boron",
+		"C": "Carbon",
+		"N": "Nitrogen",
+		"O": "Oxygen",
+		"F": "Fluorine",
+		"Ne": "Neon",
+	}
+	fmt.Println(elements1["Li"]) // Lithium
+
+	//карта строк для карты строк
+	elements2 := map[string]map[string]string{
+		"H": map[string]string{
+			"name":  "Hydrogen",
+			"state": "gas",
+		},
+		"He": map[string]string{
+			"name":  "Helium",
+			"state": "gas",
+		},
+		"Li": map[string]string{
+			"name":  "Lithium",
+			"state": "solid",
+		},
+		"Be": map[string]string{
+			"name":  "Beryllium",
+			"state": "solid",
+		},
+		"B": map[string]string{
+			"name":  "Boron",
+			"state": "solid",
+		},
+		"C": map[string]string{
+			"name":  "Carbon",
+			"state": "solid",
+		},
+		"N": map[string]string{
+			"name":  "Nitrogen",
+			"state": "gas",
+		},
+		"O": map[string]string{
+			"name":  "Oxygen",
+			"state": "gas",
+		},
+		"F": map[string]string{
+			"name":  "Fluorine",
+			"state": "gas",
+		},
+		"Ne": map[string]string{
+			"name":  "Neon",
+			"state": "gas",
+		},
+	}
+	//тип нашей карты map[string]map[string]string
+
+
+	if el, ok := elements2["Li"]; ok {
+		fmt.Println(el["name"], el["state"]) // Lithium solid
+	}
+
+
+
+
 }
 
 

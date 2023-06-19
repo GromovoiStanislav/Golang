@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
+
 
 func main() {
 	
@@ -118,7 +122,7 @@ func main() {
 
 
 
-
+	//Копирование слайсов
 	s1 := []int{1, 2, 3}
 	fmt.Println(s1) // [1 2 3]
 	
@@ -168,6 +172,24 @@ func main() {
 	b1 := []int{1, 2, 3}
 	fnB(b1)
 	fmt.Println(b) // [1 15 3] Срез Изменился!!!
+
+
+
+	//Сортировка слайсов
+	nums1 := []int{2, 1, 6, 5, 3, 4}
+	//быстрая сортировка
+	sort.Slice(nums1, func(i, j int) bool {
+		return nums1[i] < nums1[j]
+	})
+	fmt.Println(nums1) // [1 2 3 4 5 6]
+
+	nums2 := []int{2, 1, 6, 5, 3, 4}
+	//сортировка вставками
+	sort.SliceStable(nums2, func(i, j int) bool {
+		return nums2[i] < nums2[j]
+	})
+	fmt.Println(nums2) // [1 2 3 4 5 6]
+
 
 }
 
