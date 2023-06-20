@@ -50,10 +50,10 @@ func swap(x, y int) (int, int) {
 } 
 
 
-func sum(numbers ...int) (res int) {
-	// numbers - это slice !!!
-    for _, number := range numbers {
-        res += number
+func sum(nums  ...int) (res int) {
+	// nums  - это slice !!!
+    for _, v := range nums  {
+        res += v 
     }
     return
 }
@@ -102,6 +102,11 @@ func main() {
 
 	fmt.Println(sum([]int{1, 2}...))    // 3
     fmt.Println(sum([]int{1, 2, 3}...)) // 6
+	
+	slice := []int{42, 33, 22, 11}
+	fmt.Println(sum(slice...)) // 108
+	arr := [4]int{42, 33, 22, 11}
+	fmt.Println(sum(arr[:]...)) // 108
 
 	fmt.Println(foo("Это срез:", 1, 2, 3, 4, 5)) // Это срез: [1 2 3 4 5]
 
