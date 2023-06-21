@@ -119,7 +119,7 @@ func main() {
 	fmt.Println(num) // [0 8 4 6 8]
 
 
-
+	// обединение срезов
 	g := []int{1, 2, 3}
 	g = append(g, g...)
 	fmt.Println(g) // [1 2 3 1 2 3]
@@ -227,6 +227,18 @@ func main() {
 	fmt.Println(nums2) // [1 2 3 4 5 6]
 
 
+
+	//Построение многомерных срезов
+	seaNames := [][]string{
+		{"shark", "octopus", "squid", "mantis shrimp"},
+		{"Sammy", "Jesse", "Drew", "Jamie"},
+	}
+
+	fmt.Println(seaNames) // [[shark octopus squid mantis shrimp] [Sammy Jesse Drew Jamie]]
+	fmt.Println(seaNames[0]) // [shark octopus squid mantis shrimp]
+	fmt.Println(seaNames[1]) // [Sammy Jesse Drew Jamie]
+	fmt.Println(seaNames[0][0]) // shark
+	fmt.Println(seaNames[1][0]) // Sammy
 }
 
 
