@@ -72,12 +72,26 @@ func main() {
 
 	// объединяет срез строк через символ
     strings.Join([]string{"hello","world"}, "-") // hello-world
+	strings.Join([]string{"hello","world"}, " ") // hello world
 	strings.Join([]string{"hello", "world"}, "") // helloworld
 
 	// Разбивает строку согласно разделителю и возвращает срез
     strings.Split("a-b-c-d-e", "-") //  [a b c d e]          - len 5
 	strings.Split("a-b-c-d-e", "")  // [a - b - c - d - e]   - len 9
 	strings.Split("a-b-c-d-e", "*") //[a-b-c-d-e]            - len 1
+
+
+	/*
+	Builder 
+	Когда необходимо собрать большую строку по каким-то правилам, использование конкатенации — не лучшее решение,
+	потому что каждая операция создает новую строку, что сильно влияет на производительность при большом количестве операций.
+	Такая задача решается с помощью билдера:
+	*/
+	sb := &strings.Builder{}
+	sb.WriteString("hello")
+	sb.WriteString(" ")
+	sb.WriteString("world")
+	fmt.Println(sb.String()) // hello world
 
 
 }
