@@ -16,6 +16,8 @@ func main() {
 
 	fmt.Println(emoji) //[1087 1088 1080 1074 1077 1090 128512]
 	fmt.Println(string(emoji)) // привет😀
+	fmt.Println(len(emoji)) //7
+
 
 	for i := 0; i < len(emoji); i++ {
 		fmt.Println(emoji[i], string(emoji[i])) // выводим код символа и его строковое представление

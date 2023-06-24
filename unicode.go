@@ -13,7 +13,7 @@ func main() {
 	var ru = "русский"
 	fmt.Println(len(en), len(ru)) //7 14  количество байт
 	fmt.Println(utf8.RuneCountInString(en), utf8.RuneCountInString(ru)) // 7 7  длинна строки в символах
-
+	fmt.Println(len([]rune("русский"))) //8
 
 
 	// функции ниже принимают на вход тип rune
