@@ -79,9 +79,11 @@ func main() {
 	for i := range rs {
 		if rs[i] == 'р' {
 			rs[i] = '*'
+		} else if rs[i] == ' ' {
+			rs[i] = '_'
 		}
 	}
-	fmt.Printf("Измененнный срез в виде строки: %s\n", string(rs)) //Измененнный срез в виде строки: Это с*ез *ун
-	fmt.Println(string(rs)) // Это с*ез *ун
+	fmt.Printf("Измененнный срез в виде строки: %s\n", string(rs)) //Измененнный срез в виде строки: Это_с*ез_*ун
+	fmt.Println(string(rs)) // Это_с*ез_*ун
 
 }
