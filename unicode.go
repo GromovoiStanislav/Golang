@@ -33,11 +33,13 @@ func main() {
 	// проверка символа на цифру
 	fmt.Println(unicode.IsDigit('1')) // true
 	fmt.Println(unicode.IsDigit('g')) // false
+	fmt.Println(unicode.Is(unicode.Digit, '2')) // true
 
 	// проверка символа на букву
 	fmt.Println(unicode.IsLetter('a')) // true
 	fmt.Println(unicode.IsLetter('1'))  // false
 	fmt.Println(unicode.IsLetter('\t')) // false
+	fmt.Println(unicode.Is(unicode.Letter, '2'))// false
 
 	// проверка символа на нижний регистр
 	fmt.Println(unicode.IsLower('A')) // false
@@ -53,6 +55,10 @@ func main() {
 	// например, проверка на латиницу:
 	fmt.Println(unicode.Is(unicode.Latin, 'ы')) // false
 	fmt.Println(unicode.Is(unicode.Latin, 'g')) // true
+
+	// Проверка нескольких правил
+	fmt.Print(unicode.In('d', unicode.Latin, unicode.Digit)) // true
+	fmt.Print(unicode.In('2', unicode.Latin, unicode.Digit)) // 2
 
 	// функции преобразований
 	fmt.Println(string(unicode.ToLower('F'))) // f
