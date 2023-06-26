@@ -86,4 +86,26 @@ func main() {
 	fmt.Printf("Измененнный срез в виде строки: %s\n", string(rs)) //Измененнный срез в виде строки: Это_с*ез_*ун
 	fmt.Println(string(rs)) // Это_с*ез_*ун
 
+
+	// Создадим новый []rune из 10 элементов
+	new_rs := make([]rune, 10)
+	fmt.Println(new_rs) // [0 0 0 0 0 0 0 0 0 0]
+	new_rs = append(new_rs, 'Б')
+	fmt.Println(new_rs) // [0 0 0 0 0 0 0 0 0 0 1041]
+	new_rs[1] = 'Ю'
+	fmt.Println(new_rs) // [0 1070 0 0 0 0 0 0 0 0 1041]
+
+
+
+	// Создадим новый пустой []rune
+	new_rs2 := make([]rune, 0)
+	fmt.Println(new_rs2) // []
+	new_rs2 = append(new_rs2, 'Б')
+	fmt.Println(new_rs2) // [1041]
+
+
+	// перевод rune в string
+	str := string('H')
+	fmt.Println(str)
+
 }

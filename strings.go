@@ -39,6 +39,13 @@ func main() {
     strings.HasPrefix("Mr. Doe", "Mr.") // true
 	strings.HasPrefix("test", "te") // true
 
+	// Количество вхождений 
+	strings.Count("hello", string('l')) // 2   тут передается rune !!!
+	strings.Count("hello", "H") // 0
+	strings.Count("hello", "р") // 1
+	strings.Count("hello", "he") //1
+
+
 	// Заканчивается ли строка суффиксом
 	strings.HasSuffix("Mr. Doe", "Doe")// true
 	strings.HasSuffix("test", "st") // true

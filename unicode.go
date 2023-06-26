@@ -15,6 +15,18 @@ func main() {
 	fmt.Println(utf8.RuneCountInString(en), utf8.RuneCountInString(ru)) // 7 7  длинна строки в символах
 	fmt.Println(len([]rune("русский"))) //8
 
+	text := "Быть или не быть."
+	// возвращает первуюруну и количество байт этой руны
+	firstChar, a := utf8.DecodeRuneInString(text)
+	fmt.Println(firstChar, a) // 1041 2
+	fmt.Println(unicode.IsUpper(firstChar)) // true
+	// возвращает последнюю руну и количество байт этой руны
+	lastChar, b := utf8.DecodeLastRuneInString(text)
+	fmt.Println(lastChar, b)  // 46 1
+	fmt.Println(lastChar == '.') //true
+
+
+
 
 	// функции ниже принимают на вход тип rune
 
