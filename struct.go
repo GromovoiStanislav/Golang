@@ -77,8 +77,6 @@ type Android struct {
 
 
 
-
-
 func main() {
     t := Test{11, 2}
     fmt.Println(t.do()) // 9

@@ -239,6 +239,10 @@ func main() {
 	fmt.Println(seaNames[1]) // [Sammy Jesse Drew Jamie]
 	fmt.Println(seaNames[0][0]) // shark
 	fmt.Println(seaNames[1][0]) // Sammy
+
+
+
+	fmt.Println(MergeNumberLists([]int{1, 2}, []int{3}, []int{4, 5})) // [1 2 3 4, 5]
 }
 
 
@@ -248,4 +252,21 @@ func fnA(a [3]int) {
 
 func fnB(a []int) {
 	a[1] = 15
+}
+
+
+
+// принимает вариативный список слайсов чисел и объединяет их в 1, сохраняя последовательность:
+func MergeNumberLists(numberLists ...[]int) []int {
+	mergedCap := 0
+	for i := 0; i < len(numberLists); i++ {
+		mergedCap += len(numberLists[i])
+	}
+
+	merged := make([]int, 0, mergedCap)
+	for _, nl := range numberLists {
+		merged = append(merged, nl...)
+	}
+
+	return merged
 }

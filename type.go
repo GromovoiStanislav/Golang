@@ -25,6 +25,19 @@ func printBooks(lib library){
 }
 
 
+
+type counter int
+// передается указатель, чтобы можно было изменить состояние счетчика "c"
+func (c *counter) inc() {
+	*c++
+}
+
+
+
+type errorCode string
+
+
+
 func main() {  
     var distance mile = 5
     distanceToEnemy(distance) // расстояние для противника: 5 миль
@@ -54,5 +67,18 @@ func main() {
 	// Book1
 	// Book2
 	// Book3
+
+
+	c := counter(0)
+	c.inc()
+	c.inc()
+	// (&c).inc() // передается указатель на счетчик &c
+	fmt.Println(c) // 2
+
+
+	// Алиас можно конвертировать в оригинальный тип и обратно:
+	ec := errorCode("internal")
+	fmt.Println(ec) // internal
+	fmt.Println(string(ec)) // internal
 
 }
