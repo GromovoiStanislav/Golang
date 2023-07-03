@@ -42,7 +42,7 @@ func divide(a int, b int) (int, error) {
 
 		// или оборачиваем в виде "[название метода]: %w". %w — это плейсхолдер для ошибки
 		return 0, fmt.Errorf("divide: %w", errDivisionByZero) // for errors.Is
-		return 0, fmt.Errorf("divide: %w", DivisionByZeroErr{}) // for errors.As
+		//return 0, fmt.Errorf("divide: %w", DivisionByZeroErr{}) // for errors.As
 	}
 	return a / b, nil
 }
