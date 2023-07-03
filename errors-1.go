@@ -22,15 +22,27 @@ func validateName(name string) error {
     return nil
 }
 
+
+
 // errors.New создает новый объект ошибки
 var errDivisionByZero = errors.New("division by zero")
 
+
+
+type DivisionByZeroErr struct{}
+func (e DivisionByZeroErr) Error() string {
+	return "division by zero"
+}
+
+
 func divide(a int, b int) (int, error) {
 	if b == 0 {
-		// return -1, errDivisionByZero
+		// return 0, errDivisionByZero    // for errors.Is
+		// return 0, DivisionByZeroErr{}  // for errors.As
 
 		// или оборачиваем в виде "[название метода]: %w". %w — это плейсхолдер для ошибки
-		return -1, fmt.Errorf("divide: %w", errDivisionByZero)
+		return 0, fmt.Errorf("divide: %w", errDivisionByZero) // for errors.Is
+		return 0, fmt.Errorf("divide: %w", DivisionByZeroErr{}) // for errors.As
 	}
 	return a / b, nil
 }
@@ -47,7 +59,18 @@ func main() {
 			
 			if errors.Is(err, errDivisionByZero) {//проверки типов конкретных ошибок
 				fmt.Println("error:", err) 
+			} else {
+				fmt.Println("unknown error:", err)
 			}
+
+
+			if errors.As(err, &DivisionByZeroErr{}) {//Иногда нужно проверить не конкретную ошибку, а целый тип
+				fmt.Println("error:", err)
+			} else {
+				fmt.Println("unknown error:", err)
+			}
+
+
 
 		} else {
 			fmt.Println(d) // Деление прошло без ошибок
