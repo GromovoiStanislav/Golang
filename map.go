@@ -18,6 +18,8 @@ func main() {
 	}
 	fmt.Println(people)     // map[Tom:1 Bob:2 Sam:4 Alice:8]
 
+	fmt.Println(len(people)) // 4 
+
 	// Для обращения к элементам нужно применять ключи:
 	fmt.Println(people["Alice"]) // 8
 	fmt.Println(people["Bob"])   // 2
@@ -56,6 +58,9 @@ func main() {
 	// var people2 = map[string]int{}
 	// people2 := map[string]int{}
 	people2 := make(map[string]int)
+
+
+
 	
 	// добавление элементов
 	people2["Kate"] = 128
