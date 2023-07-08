@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 func main() {
@@ -78,4 +79,106 @@ func main() {
 	d5 := c5 / a5
 	fmt.Printf("%T %v\n", d5, d5) // invalid operation: c5 / a5 (mismatched types float64 and int)
 
+
+	/*
+	Конвертация строк в байты/rune и обратно
+	*/
+
+	// Строка в Go это срез байтов, поэтому мы можем конвертировать байты в строку и наоборот:
+	str1 := "str"
+	bs1 := []byte(str1)
+	str2 := string(bs1)
+	fmt.Println(str1,str2) // str str
+	fmt.Println(bs1) // [115 116 114] - побайтовый срез
+
+	
+	text := "строка"
+	bs2 := []byte(text)
+	fmt.Println(text, string(bs2)) //строка строка
+	fmt.Println(bs2) // [209 129 209 130 209 128 208 190 208 186 208 176] - побайтовый срез
+	
+	// Тоже самое работает и со срезами типа rune:
+	rs := []rune(text)
+	fmt.Println(text, string(rs)) //строка строка
+	fmt.Println(rs) // [1089 1090 1088 1086 1082 1072] - срез рун
+
+
+	/*
+	Конвертация в строки
+	*/
+
+	// Itoa
+	{
+		text := strconv.Itoa(2020)        // int -> string
+		fmt.Printf("%T %v\n", text, text) // string 2020
+
+		fmt.Println()
+	}
+
+	// FormatInt
+	{
+		var n int64 = 0xB                     // 'B' в шестнадцатеричной это 11 в десятичной системе
+		fmt.Println(strconv.FormatInt(n, 2))  // 1011
+		fmt.Println(strconv.FormatInt(n, 10)) // 11
+		fmt.Println(strconv.FormatInt(n, 16)) // b
+
+		fmt.Println()
+	}
+
+	// FormatUint
+	{
+		var n uint64 = 93101
+		res := strconv.FormatUint(n, 10)
+		fmt.Printf("%T %v\n", res, res) // string 93101
+
+		fmt.Println()
+	}
+
+	// FormatFloat
+	{
+		var a float64 = 1.0123456789
+
+		// 1 параметр - число для конвертации
+		// fmt - форматирование
+		// prec - точность (кол-во знаков после запятой)
+		// bitSize - 32 или 64 (32 для float32, 64 для float64)
+		fmt.Println(strconv.FormatFloat(a, 'f', 2, 64)) // 1.01
+
+		// если мы хотим учесть все цифры после запятой, то можем в prec передать -1
+		fmt.Println(strconv.FormatFloat(a, 'f', -1, 64)) // 1.0123456789
+
+		// Возможные форматы fmt:
+		// 'f' (-ddd.dddd, no exponent),
+		// 'b' (-ddddp±ddd, a binary exponent),
+		// 'e' (-d.dddde±dd, a decimal exponent),
+		// 'E' (-d.ddddE±dd, a decimal exponent),
+		// 'g' ('e' for large exponents, 'f' otherwise),
+		// 'G' ('E' for large exponents, 'f' otherwise),
+		// 'x' (-0xd.ddddp±ddd, a hexadecimal fraction and binary exponent), or
+		// 'X' (-0Xd.ddddP±ddd, a hexadecimal fraction and binary exponent).
+		var b float64 = 2222 * 1023 * 245 * 2 * 52
+		fmt.Println(strconv.FormatFloat(b, 'e', -1, 64)) // 5.791874088e+10
+
+		fmt.Println()
+	}
+
+	// Sprint and Sprintf
+	{
+		fmt.Println(fmt.Sprint(20.19) + "Попугаев") // 20.19Попугаев
+
+		a := 20.20
+		fmt.Println(fmt.Sprintf("%f", a) + "Попугаев") // 20.200000Попугаев
+
+		fmt.Println()
+		//Внимание! Использовать fmt для конвертации нежелательно из-за того что производительность ниже по сравнению с strconv.
+	}
+
+	// FormatBool
+	{
+		a := true
+		res := strconv.FormatBool(a)
+		fmt.Printf("%T %v", res, res) // string true
+	}
+
 }
+
