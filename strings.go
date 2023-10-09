@@ -87,6 +87,10 @@ func main() {
 	strings.Split("a-b-c-d-e", "")  // [a - b - c - d - e]   - len 9
 	strings.Split("a-b-c-d-e", "*") //[a-b-c-d-e]            - len 1
 
+	// Разбивает фразу по пробелам и возвращает срез
+	strings.Fields("cats are cute") // [cats are cute]
+	strings.Fields("Hello world!") // [Hello world!]
+
 
 	/*
 	Builder 

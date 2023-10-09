@@ -10,6 +10,7 @@ import (
 func say(id int, phrase string) {
 	for _, word := range strings.Fields(phrase) {
 		fmt.Printf("Worker #%d says: %s...\n", id, word)
+		
 		dur := time.Duration(rand.Intn(100)) * time.Millisecond
 		time.Sleep(dur)
 	}
@@ -21,7 +22,7 @@ func main() {
 	time.Sleep(500 * time.Millisecond)
 }
 
-// go run .\goroutine.go
+// go run .\goroutine-1.go
 
 /*
 Worker #2 says: cats...
